@@ -48,6 +48,9 @@ const Blog = () => {
                 </section>
             </main>
             <MainFooter />
+            <div>
+            <button><Link to='/BlogWrite'>New Blog</Link></button>
+            </div>
         </>
     );
 }
