@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import Blogs from './Blogs';
-
+import catImage from './cat.png';
 import {
     Container,
     Row,
@@ -31,7 +31,7 @@ const Blog = () => {
                                         <div className="card-body p-0">
                                             <Link to={`/blog-details/${blog.id}`}>
                                                 { blog.blogImg }
-                                                <img src="" alt="" className="img-fluid w-100" style={{ height: "150px" }} />
+                                                <img src={catImage} alt="catImage" className="img-fluid w-100" style={{ height: "150px" }} />
                                             </Link>
                                             <div className="p-1">
                                                 <Link to={`/blog-details/${blog.id}`}>
