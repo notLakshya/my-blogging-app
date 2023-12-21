@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 const RegistrationForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-
+  const navigate = useNavigate();
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -19,7 +19,10 @@ const RegistrationForm = () => {
     setEmail(e.target.value);
   };
   const handleClick2=() =>{
-    axios.post('https://jsonplaceholder.typicode.com/users',{username:'hehe',password:'lmao',email:'abc@deloitte.com'}).then(function (response) {console.log(response);}).catch(function (error) {console.log(error);});
+    axios.post('https://jsonplaceholder.typicode.com/users',{username:'hehe',password:'lmao',email:'abc@deloitte.com'})
+    .then(function (response) {console.log(response);
+      navigate('/Login');})
+    .catch(function (error) {console.log(error);});
   };
 
   const handleSubmit = (e) => {
@@ -48,7 +51,7 @@ const RegistrationForm = () => {
         <input type="email" value={email} onChange={handleEmailChange} />
       </label>
       <br />
-      <button type="submit"><Link to='/Login'>Register</Link></button>
+      <button type="submit" onClick={handleClick2}>Register</button>
       <button><Link to='/'>Back to home page</Link></button>
     </form>
   );
