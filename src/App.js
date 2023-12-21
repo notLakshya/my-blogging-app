@@ -14,7 +14,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Home />}></Route>
       <Route path="/blog" exact element={<Blog />} />
-      <Route path="/blog-details/:blogId" exact element={<BlogDetails />} />      
+      <Route path="/blog-details/:bid"  element={<BlogDetails />} />      
       <Route path="*" element={<Navigate to="/" replace />} />
       <Route path='/Login' element={ <Login/> }></Route>
       <Route path='/RegisterUser' element={ <RegisterUser/> }></Route>
