@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import MainNavbar from './mainNavbar';
+import MainFooter from './mainFooter';
 
 const BlogInputForm = () => {
   const [title, setTitle] = useState('');
@@ -45,7 +47,7 @@ const BlogInputForm = () => {
   };
   const handleClick2 = () => {
     // Make a POST request using axios
-    axios.post('https://jsonplaceholder.typicode.com/posts', {Title: 'lmao', Author: 'Don' , content: 'NATURE IS LMAO' ,Image:'C:\Users\shubhamyadav3\Desktop\desk\cat.jpg'})
+    axios.post('https://jsonplaceholder.typicode.com/posts', {Title: 'lmao', Author: 'Don' , content: 'NATURE IS LMAO'})
       .then(function (response) {
         console.log(response);
         alert('BLOG SUBMITTED ....')
@@ -60,6 +62,8 @@ const BlogInputForm = () => {
   };
 
   return (
+    <>
+    <MainNavbar />
     <form onSubmit={handleSubmit}>
       <label>
         Title:
@@ -83,7 +87,10 @@ const BlogInputForm = () => {
       <br />
       {/* <button type="submit">Submit</button> */}
       <button onClick={handleClick2}>SUBMIT</button>
+      
     </form>
+    < MainFooter />
+    </>
   );
 };
 
