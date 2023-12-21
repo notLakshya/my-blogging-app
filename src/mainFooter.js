@@ -2,13 +2,14 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 function mainFooter(props) {
     return (
-        <div>
-            <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Blogging App</a>
+        <footer className='bg-primary'>
+          
+  <div className="container-fluid">
+    <a className="navbar-brand" href='/'>Blogging App</a>
+    <h4>Contact us at</h4>
+  
   </div>
-</nav>
-        </div>
+        </footer>
     );
 }
 

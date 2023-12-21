@@ -1,57 +1,44 @@
-import React, { useRef } from "react";
-import { Link } from "react-router-dom";
-import Blogs from './Blogs';
-
-import {
-    Container,
-    Row,
-    Col,
-} from "reactstrap";
-
-import MainNavbar from "./mainNavbar.js";
-import MainFooter from "./mainFooter.js";
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import MainNavbar from './mainNavbar'
+import MainFooter from './mainFooter'
+ 
 const Blog = () => {
-    const mainRef = useRef(null);
-    return (
-        <>
-            <MainNavbar />
-            <main ref={mainRef}>
-                <section className="section section-shaped section-lg">
-                    <Container className="pt-lg">
-                        <Row className="text-center justify-content-center">
-                            <Col lg="10">
-                                <h2 className="display-3 text-white">Blogs</h2>
-                            </Col>
-                        </Row>
-                        <Row className="row-grid mt-5">
-                            {[Blogs].map((blog, index) => (
-                                <div key={index} className="col-md-4">
-                                    <div className="card mb-4 border-0">
-                                        <div className="card-body p-0">
-                                            <Link to={`/blog-details/${blog.id}`}>
-                                                { blog.blogImg }
-                                                <img src="" alt="" className="img-fluid w-100" style={{ height: "150px" }} />
-                                            </Link>
-                                            <div className="p-1">
-                                                <Link to={`/blog-details/${blog.id}`}>
-                                                    <h6 className="card-title mb-0 pb-0 font-bold">{blog.title}</h6>
-                                                </Link>
-                                                <p className="card-text">{blog.content}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </Row>
-                    </Container>
-                </section>
-            </main>
-            <MainFooter />
-            <div>
-            <button><Link to='/BlogWrite'>New Blog</Link></button>
-            </div>
-        </>
-    );
-}
+  const [posts, setPosts] = useState([]);
+ 
+  useEffect(() => {
+    // Fetch posts when the component mounts
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => {
+        setPosts(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching posts:", error);
+      });
+  }, []);
+ 
+  return (
+    <Container className="mt-4">
+        <MainNavbar />
+      <Row>
+        {posts.map((post) => (
+          <Col key={post.id} md={4} className="mb-4">
+            <Card>
+              <Card.Body>
+                <Card.Title>{post.title}</Card.Title>
+                <Card.Text>{post.body}</Card.Text>
+                <Button id={post.id}>Read More</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+      <MainFooter />
+    </Container>
+  );
+};
+ 
 export default Blog;
