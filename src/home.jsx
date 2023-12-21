@@ -1,11 +1,11 @@
 import React from 'react';
 import MainFooter from './mainFooter';
-import MainNavbar from './mainNavbar';
+import NavbarHome from './navbarHome';
 import { Link } from 'react-router-dom';
 function home(props) {
     return (
         <>
-         <MainNavbar />
+         <NavbarHome />
           <div>
             <h1>Welcome to Blogging app</h1>
             <Link to="/"></Link>

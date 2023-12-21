@@ -48,7 +48,7 @@ const RegistrationForm = () => {
         <input type="email" value={email} onChange={handleEmailChange} />
       </label>
       <br />
-      <button type="submit">Register</button>
+      <button type="submit"><Link to='/Login'>Register</Link></button>
       <button><Link to='/'>Back to home page</Link></button>
     </form>
   );
